@@ -1,55 +1,56 @@
-# 💻 e-Learning Website for Coding
+<h1 align="center">💻 e-Learning Website for Coding 🎓</h1>
 
-A web-based learning platform designed to help users learn programming through structured courses, video tutorials, quizzes, and hands-on practice. This project was developed using **Python Django** and **SQLite3** as part of my **BSc IT Semester 4** academic work.
+<p align="center">
+  A responsive and interactive web platform to help users learn programming online — built using <strong>Django</strong> and <strong>SQLite3</strong> during Semester 4 of my BSc IT.
+</p>
 
----
-
-## 📌 Project Objective
-
-The aim of this project is to provide an interactive environment for users to:
-- Learn coding concepts through guided lessons
-- Practice with exercises
-- Take quizzes for self-assessment
-- Access structured content in a user-friendly format
-
-This e-Learning platform acts as a **mini-edtech system** with core functionalities needed for self-paced programming education.
+<p align="center">
+  <img src="https://img.shields.io/badge/Django-Framework-green" />
+  <img src="https://img.shields.io/badge/SQLite-Database-blue" />
+  <img src="https://img.shields.io/badge/Python-3.10-yellow" />
+  <img src="https://img.shields.io/badge/Status-Completed-brightgreen" />
+</p>
 
 ---
 
-## 🚀 Features
+## 🌟 Overview
 
-- ✅ User Registration and Login System
-- 📚 Course Management (Python, JavaScript, etc.)
-- 🎥 Video-based Lessons
-- 📝 Practice Sections for Code Writing
-- ❓ Quiz Module for Topic Evaluation
-- 📊 Admin Dashboard to Manage Users & Content
-- 📱 Mobile-Friendly & Responsive UI
+This e-Learning platform is designed to help beginners and coding enthusiasts learn popular programming languages through video tutorials, exercises, and quizzes. Whether you're new to coding or brushing up your skills, this platform offers a structured and engaging learning experience.
 
 ---
 
-## 🧑‍💻 Technologies Used
+## ✨ Key Features
 
-| Technology     | Purpose                         |
-|----------------|---------------------------------|
-| Python         | Programming Language (Backend)  |
-| Django         | Web Framework                   |
-| SQLite3        | Database (Lightweight & Local)  |
-| HTML5/CSS3     | Frontend Design                 |
-| JavaScript     | Frontend Interactivity          |
-| Bootstrap (optional) | Styling & Layout             |
+- 🔐 **User Authentication** – Sign up, log in, and manage your profile securely.
+- 🧑‍🏫 **Course Modules** – Browse multiple courses such as Python, JavaScript, and more.
+- 📹 **Video Lessons** – Learn through embedded video tutorials.
+- 📝 **Coding Practice** – Hands-on practice environments for selected lessons.
+- 🧠 **Quizzes** – Test your understanding after each topic.
+- 🧑‍💼 **Admin Panel** – Manage users, content, and course materials.
 
 ---
 
-## 📂 Folder Structure
+## 🛠️ Tech Stack
+
+| Technology    | Description                    |
+|---------------|--------------------------------|
+| Python        | Backend Logic                  |
+| Django        | Web Framework                  |
+| SQLite3       | Database (default Django DB)   |
+| HTML & CSS    | Frontend Structure and Design  |
+| JavaScript    | Interactivity and UI Enhancements |
+
+---
+
+## 📁 Project Structure
 
 ```bash
 e-learning-website/
 │
-├── e_learning/              # Django application logic
+├── e_learning/              # Django App
 ├── templates/               # HTML templates
-├── static/                  # Static files (CSS, JS, images)
-├── db.sqlite3               # SQLite3 database file
-├── manage.py                # Django project manager
-├── requirements.txt         # Python dependencies
-└── README.md                # Project documentation
+├── static/                  # CSS, JS, Images
+├── db.sqlite3               # Local database
+├── manage.py                # Django CLI
+├── requirements.txt         # Dependencies
+└── README.md                # Project description
