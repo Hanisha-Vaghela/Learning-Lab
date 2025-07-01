@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete C# Tutorial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 400px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .modal-content p {
+      font-size: 16px;
+      color: #666;
+    }
+
+    .btn {
+      margin: 10px 5px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .login-btn {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .signup-btn {
+      background-color: #28a745;
+      color: white;
+    }
+        a{
+            text-decoration:none;
+        }
+        button {
+            background-color: #3419e6;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            scroll-behavior: smooth;
+        }
+        .demo {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #fff;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #68217A;
+            color: white;
+            padding: 20px 0;
+            overflow-y: auto;
+            height: 100%;
+        }
+        
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #5a1a6a;
+        }
+        
+        .sidebar h2 {
+            margin-bottom: 10px;
+        }
+        
+        .topics-list {
+            list-style-type: none;
+        }
+        
+        .topic-item {
+            padding: 10px 20px;
+            border-bottom: 1px solid #5a1a6a;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .topic-item:hover {
+            background-color: #5a1a6a;
+        }
+        
+        .topic-item.active {
+            background-color: #007ACC;
+            color: white;
+        }
+        
+        .subtopics {
+            list-style-type: none;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .topic-item.active .subtopics {
+            display: block;
+        }
+        
+        .subtopic {
+            padding: 8px 10px 8px 30px;
+            font-size: 0.9em;
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+        
+        .subtopic:hover {
+            color: #68217A;
+        }
+        
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+            scroll-behavior: smooth;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            scroll-margin-top: 20px;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #68217A;
+        }
+        
+        .section h3 {
+            color: #68217A;
+            margin: 20px 0 10px;
+        }
+        
+        .section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .code-example {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-left: 4px solid #68217A;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .demo {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #fff;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #68217A;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .note {
+            background-color: #e8f4fc;
+            border-left: 4px solid #007ACC;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        
+        .warning {
+            background-color: #fff3e0;
+            border-left: 4px solid #e67e22;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        
+        .tryit-button {
+            background-color: #68217A;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px 0;
+        }
+        
+        .tryit-button:hover {
+            background-color: #5a1a6a;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>C# Tutorial</h2>
+            <p>Complete C# Guide</p>
+        </div>
+        <ul class="topics-list">
+            <li class="topic-item active">
+                <div>C# Introduction</div>
+                <ul class="subtopics">
+                    <a href="#what-is-csharp"><li class="subtopic active">What is C#?</li></a>
+                    <a href="#c_sharp-syntex"><li class="subtopic">C# Syntax</li></a>
+                    <li class="subtopic">Hello World</li>
+                </ul>
+            </li>
+            <li class="topic-item">
+                <div>C# Basics</div>
+                <ul class="subtopics">
+                    <li class="subtopic">Variables</li>
+                    <li class="subtopic">Data Types</li>
+                    <li class="subtopic">Operators</li>
+                    <li class="subtopic">Type Casting</li>
+                </ul>
+            </li>
+            <li class="topic-item">
+                <div>C# Control Flow</div>
+                <ul class="subtopics">
+                    <a href="#if-else"><li class="subtopic">If...Else</li></a>
+                    <li class="subtopic">Switch</li>
+                    <li class="subtopic">While Loop</li>
+                    <li class="subtopic">For Loop</li>
+                </ul>
+            </li>
+            <li class="topic-item">
+                <div>C# Arrays</div>
+                <ul class="subtopics">
+                    <li class="subtopic">Arrays</li>
+                    <li class="subtopic">Lists</li>
+                    <li class="subtopic">Dictionaries</li>
+                </ul>
+            </li>
+            <li class="topic-item">
+                <div>C# OOP</div>
+                <ul class="subtopics">
+                    <a href="#classes-objects"><li class="subtopic">Classes/Objects</li></a>
+                    <li class="subtopic">Methods</li>
+                    <li class="subtopic">Constructors</li>
+                    <li class="subtopic">Inheritance</li>
+                </ul>
+            </li>
+            <li class="topic-item">
+                <div>C# Advanced</div>
+                <ul class="subtopics">
+                    <li class="subtopic">Exception Handling</li>
+                    <li class="subtopic">File Handling</li>
+                    <li class="subtopic">LINQ</li>
+                    <a href="#async-await"><li class="subtopic">Async/Await</li></a>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="section" id="intro">
+            <h2>C# Introduction</h2>
+            
+            <h3 id="what-is-csharp">What is C#?</h3>
+            <p>C# (pronounced "C Sharp") is a modern, object-oriented, and type-safe programming language developed by Microsoft as part of its .NET initiative. C# combines the power and flexibility of C++ with the simplicity of Visual Basic.</p>
+            
+            <div class="note">
+                <strong>Key Features:</strong>
+                <ul>
+                    <li>Object-oriented programming language</li>
+                    <li>Strongly typed with type inference (var keyword)</li>
+                    <li>Automatic memory management (garbage collection)</li>
+                    <li>Component-oriented with properties, events, and attributes</li>
+                    <li>Language Integrated Query (LINQ)</li>
+                    <li>Asynchronous programming support (async/await)</li>
+                </ul>
+            </div>
+            
+            <h3 id="csharp-syntax">C# Syntax</h3>
+            <p>C# syntax is similar to other C-style languages like C, C++, and Java. The basic syntax rules include:</p>
+            <ul>
+                <li><strong>Case Sensitivity</strong>: C# is case-sensitive (MyClass and myclass are different)</li>
+                <li><strong>Semicolons</strong>: Statements end with semicolons</li>
+                <li><strong>Code Blocks</strong>: Enclosed in curly braces {}</li>
+                <li><strong>Comments</strong>: Single-line (//) or multi-line (/* ... */)</li>
+                <li><strong>Namespaces</strong>: Used to organize code (using directive)</li>
+                <li><strong>Main Method</strong>: Entry point of a C# program</li>
+            </ul>
+            
+            <div class="code-example">
+                <pre>// Single-line comment
+                    using System;  // Import System namespace
+
+                    /* Multi-line
+                       comment */
+                    namespace HelloWorld
+                    {
+                        class Program
+                        {
+                            static void Main(string[] args)  // Main method
+                            {
+                                Console.WriteLine("Hello World!"); // Statement
+                            }
+                        }
+                    }</pre>
+            </div>
+            
+            <h3 id="hello-world">Hello World</h3>
+            <p>The traditional "Hello World" program in C# demonstrates the basic structure of a C# application:</p>
+            
+            <div class="code-example">
+                <pre>using System;
+
+                    class Program
+                    {
+                        static void Main()
+                        {
+                            Console.WriteLine("Hello World!");
+                        }
+                    }</pre>
+            </div>
+            
+            <div class="note">
+                <strong>Explanation:</strong>
+                <ol>
+                    <li><code>using System;</code> imports the System namespace which contains fundamental classes</li>
+                    <li><code>class Program</code> defines a class (the basic unit of C# programs)</li>
+                    <li><code>static void Main()</code> is the entry point of the program</li>
+                    <li><code>Console.WriteLine()</code> outputs text to the console</li>
+                </ol>
+            </div>
+            
+            <div class="demo">
+                <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+            </div>
+
+        </div>
+        
+        {{% if request.COOKIES.user_email %}}
+            <div class="section" id="basics">
+                <h2>C# Basics</h2>
+
+                <h3 id="variables">Variables</h3>
+                <p>Variables are containers for storing data values. In C#, each variable has a specific type that determines the size and type of values it can store.</p>
+
+                <div class="code-example">
+                    <pre>// Variable declaration and initialization
+                        string name = "John Doe";  // String
+                        int age = 30;              // Integer
+                        double height = 1.85;      // Double-precision floating point
+                        bool isStudent = true;     // Boolean
+                        char grade = 'A';          // Single character
+                        decimal price = 19.99m;    // Decimal (for financial calculations)
+
+                        // Multiple variables
+                        int x = 5, y = 10, z = 15;
+
+                        // Using var for implicit typing
+                        var message = "Hello";     // Compiler infers string type
+                        var number = 42;           // Compiler infers int type</pre>
+                </div>
+
+                <div class="warning">
+                    <strong>Note:</strong> While <code>var</code> is convenient, explicit typing is often preferred for clarity, especially in public APIs.
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+
+                <h3 id="data-types">Data Types</h3>
+                <p>C# has two main categories of data types: value types and reference types. Value types store their data directly, while reference types store references to their data.</p>
+
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Data Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">Value Types</td>
+                        <td>int</td>
+                        <td>32-bit integer</td>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <td>double</td>
+                        <td>64-bit floating point</td>
+                        <td>3.14159</td>
+                    </tr>
+                    <tr>
+                        <td>bool</td>
+                        <td>Boolean (true/false)</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>char</td>
+                        <td>16-bit Unicode character</td>
+                        <td>'A'</td>
+                    </tr>
+                    <tr>
+                        <td>decimal</td>
+                        <td>128-bit precise decimal</td>
+                        <td>9.99m</td>
+                    </tr>
+                    <tr>
+                        <td>struct</td>
+                        <td>Custom value type</td>
+                        <td>DateTime</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">Reference Types</td>
+                        <td>string</td>
+                        <td>Sequence of characters</td>
+                        <td>"Hello"</td>
+                    </tr>
+                    <tr>
+                        <td>object</td>
+                        <td>Base type for all types</td>
+                        <td>object obj = 5;</td>
+                    </tr>
+                    <tr>
+                        <td>class</td>
+                        <td>Custom reference type</td>
+                        <td>class MyClass { }</td>
+                    </tr>
+                    <tr>
+                        <td>array</td>
+                        <td>Collection of elements</td>
+                        <td>int[] numbers = {1, 2, 3};</td>
+                    </tr>
+                </table>
+
+                <div class="note">
+                    <strong>Default Values:</strong> Uninitialized variables have default values (0 for numbers, false for bool, null for reference types).
+                </div>
+
+                <h3 id="operators">Operators</h3>
+                <p>C# provides a rich set of operators for performing operations on variables and values:</p>
+
+                <table>
+                    <tr>
+                        <th>Operator Type</th>
+                        <th>Operators</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>Arithmetic</td>
+                        <td>+, -, *, /, %, ++, --</td>
+                        <td>Basic mathematical operations</td>
+                        <td>int sum = a + b;</td>
+                    </tr>
+                    <tr>
+                        <td>Assignment</td>
+                        <td>=, +=, -=, *=, /=, %=</td>
+                        <td>Assign values to variables</td>
+                        <td>x += 5; // x = x + 5</td>
+                    </tr>
+                    <tr>
+                        <td>Comparison</td>
+                        <td>==, !=, >, <, >=, <=</td>
+                        <td>Compare two values</td>
+                        <td>if (a == b) { ... }</td>
+                    </tr>
+                    <tr>
+                        <td>Logical</td>
+                        <td>&&, ||, !</td>
+                        <td>Combine conditional statements</td>
+                        <td>if (a && b) { ... }</td>
+                    </tr>
+                    <tr>
+                        <td>Bitwise</td>
+                        <td>&, |, ^, ~, <<, >></td>
+                        <td>Work on bits</td>
+                        <td>int result = a & b;</td>
+                    </tr>
+                    <tr>
+                        <td>Conditional</td>
+                        <td>?:</td>
+                        <td>Ternary operator</td>
+                        <td>int max = (a > b) ? a : b;</td>
+                    </tr>
+                    <tr>
+                        <td>Null-coalescing</td>
+                        <td>??, ??=</td>
+                        <td>Null checks</td>
+                        <td>string name = input ?? "default";</td>
+                    </tr>
+                </table>
+
+                <div class="code-example">
+                    <pre>// Arithmetic operators
+                        int a = 10, b = 3;
+                        int sum = a + b;      // 13
+                        int difference = a - b; // 7
+                        int product = a * b;   // 30
+                        int quotient = a / b;  // 3 (integer division)
+                        int remainder = a % b; // 1
+
+                        // Comparison operators
+                        bool isEqual = (a == b); // false
+                        bool isGreater = (a > b); // true
+
+                        // Logical operators
+                        bool condition1 = true, condition2 = false;
+                        bool result = condition1 && condition2; // false
+                        result = condition1 || condition2;      // true
+                        result = !condition1;                   // false</pre>
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+
+                <h3 id="type-casting">Type Casting</h3>
+                <p>Type casting is when you assign a value of one data type to another type. In C#, there are two types of casting:</p>
+
+                <div class="code-example">
+                    <pre>// Implicit casting (automatically) - smaller to larger
+                        int myInt = 9;
+                        double myDouble = myInt;  // Automatic casting: int to double
+
+                        // Explicit casting (manually) - larger to smaller
+                        double anotherDouble = 9.78;
+                        int anotherInt = (int)anotherDouble;  // Manual casting: double to int
+
+                        // Conversion methods
+                        string numberString = "123";
+                        int convertedInt = Convert.ToInt32(numberString);
+                        double convertedDouble = double.Parse("3.14");
+
+                        // Using TryParse for safe conversion
+                        string input = "abc";
+                        int result;
+                        if (int.TryParse(input, out result))
+                        {
+                            Console.WriteLine("Conversion successful: " + result);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Conversion failed");
+                        }</pre>
+                </div>
+
+                <div class="warning">
+                    <strong>Important:</strong> Explicit casting can cause data loss (e.g., when casting from double to int) or runtime exceptions if the conversion isn't valid.
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+            </div>
+
+            <div class="section" id="control-flow">
+                <h2>C# Control Flow</h2>
+
+                <h3 id="if-else">If...Else</h3>
+                <p>The if statement executes a block of code if a specified condition is true. The else statement executes a block if the condition is false.</p>
+
+                <div class="code-example">
+                    <pre>int number = 10;
+
+                        // Simple if
+                        if (number > 0)
+                        {
+                            Console.WriteLine("Positive number");
+                        }
+
+                        // If-else
+                        if (number % 2 == 0)
+                        {
+                            Console.WriteLine("Even number");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Odd number");
+                        }
+
+                        // Else-if ladder
+                        if (number < 0)
+                        {
+                            Console.WriteLine("Negative");
+                        }
+                        else if (number == 0)
+                        {
+                            Console.WriteLine("Zero");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Positive");
+                        }
+
+                        // Ternary operator
+                        string result = (number > 0) ? "Positive" : "Negative or zero";
+                        Console.WriteLine(result);</pre>
+                </div>
+
+                <div class="note">
+                    <strong>Nested Ifs:</strong> You can nest if statements inside other if statements to create more complex conditions.
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+            
+                <h3 id="switch">Switch</h3>
+                <p>The switch statement selects one of many code blocks to execute based on pattern matching.</p>
+
+                <div class="code-example">
+                    <pre>int day = 4;
+                        string dayName;
+
+                        switch (day)
+                        {
+                            case 1:
+                                dayName = "Monday";
+                                break;
+                            case 2:
+                                dayName = "Tuesday";
+                                break;
+                            case 3:
+                                dayName = "Wednesday";
+                                break;
+                            case 4:
+                                dayName = "Thursday";
+                                break;
+                            case 5:
+                                dayName = "Friday";
+                                break;
+                            case 6:
+                                dayName = "Saturday";
+                                break;
+                            case 7:
+                                dayName = "Sunday";
+                                break;
+                            default:
+                                dayName = "Invalid day";
+                                break;
+                        }
+
+                        Console.WriteLine(dayName);
+
+                        // Switch expression (C# 8+)
+                        dayName = day switch
+                        {
+                            1 => "Monday",
+                            2 => "Tuesday",
+                            3 => "Wednesday",
+                            4 => "Thursday",
+                            5 => "Friday",
+                            6 => "Saturday",
+                            7 => "Sunday",
+                            _ => "Invalid day"
+                        };</pre>
+                </div>
+
+                <div class="note">
+                    <strong>C# 8+ Features:</strong> Modern C# versions support more concise switch expressions and pattern matching capabilities.
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+
+                <h3 id="while-loop">While Loop</h3>
+                <p>The while loop executes a block of code as long as a specified condition is true.</p>
+
+                <div class="code-example">
+                    <pre>int i = 0;
+
+                        // While loop
+                        while (i < 5)
+                        {
+                            Console.WriteLine(i);
+                            i++;
+                        }
+
+                        // Do-while loop (executes at least once)
+                        int j = 0;
+                        do
+                        {
+                            Console.WriteLine(j);
+                            j++;
+                        } while (j < 5);
+
+                        // Infinite loop with break
+                        int k = 0;
+                        while (true)
+                        {
+                            Console.WriteLine(k);
+                            k++;
+                            if (k >= 5) break;
+                        }</pre>
+                </div>
+
+                <div class="warning">
+                    <strong>Important:</strong> Ensure your loop has a condition that will eventually become false to avoid infinite loops.
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+
+                <h3 id="for-loop">For Loop</h3>
+                <p>The for loop is used when you know exactly how many times you want to loop through a block of code.</p>
+
+                <div class="code-example">
+                    <pre>// Basic for loop
+                        for (int i = 0; i < 5; i++)
+                        {
+                            Console.WriteLine(i);
+                        }
+
+                        // Multiple variables
+                        for (int i = 0, j = 10; i < j; i++, j--)
+                        {
+                            Console.WriteLine($"{i} - {j}");
+                        }
+
+                        // Nested loops
+                        for (int row = 1; row <= 3; row++)
+                        {
+                            for (int col = 1; col <= 3; col++)
+                            {
+                                Console.Write($"[{row},{col}] ");
+                            }
+                            Console.WriteLine();
+                        }
+
+                        // Foreach loop (for collections)
+                        string[] colors = { "Red", "Green", "Blue" };
+                        foreach (string color in colors)
+                        {
+                            Console.WriteLine(color);
+                        }</pre>
+                </div>
+
+                <div class="note">
+                    <strong>Foreach:</strong> The foreach loop is specifically designed for iterating through collections like arrays and lists.
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+            </div>
+
+            <div class="section" id="arrays">
+                <h2>C# Arrays</h2>
+
+                <h3 id="arrays">Arrays</h3>
+                <p>Arrays are used to store multiple values in a single variable. C# arrays are zero-indexed and have a fixed size once created.</p>
+
+                <div class="code-example">
+                    <pre>// Declaration and initialization
+                        int[] numbers = { 1, 2, 3, 4, 5 };
+                        string[] names = new string[3]; // Array of 3 empty strings
+
+                        // Accessing elements
+                        Console.WriteLine(numbers[0]); // First element (1)
+                        numbers[1] = 10; // Modify second element
+
+                        // Length property
+                        Console.WriteLine(numbers.Length); // 5
+
+                        // Multidimensional arrays
+                        int[,] matrix = new int[2, 3] { { 1, 2, 3 }, { 4, 5, 6 } };
+                        Console.WriteLine(matrix[0, 1]); // 2
+
+                        // Jagged arrays (array of arrays)
+                        int[][] jagged = new int[3][];
+                        jagged[0] = new int[] { 1, 2 };
+                        jagged[1] = new int[] { 3, 4, 5 };
+                        jagged[2] = new int[] { 6 };
+
+                        // Array methods
+                        Array.Sort(numbers); // Sorts the array
+                        Array.Reverse(numbers); // Reverses the array
+                        int index = Array.IndexOf(numbers, 3); // Finds index of value 3</pre>
+                </div>
+
+                <div class="note">
+                    <strong>Array Types:</strong> C# supports single-dimensional, multidimensional, and jagged (array of arrays) arrays.
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+
+                <h3 id="lists">Lists</h3>
+                <p>The List<T> class represents a strongly typed list of objects that can be accessed by index. Unlike arrays, lists can dynamically resize.</p>
+                
+                <div class="code-example">
+                    <pre>using System.Collections.Generic;
+
+                        // Creating a list
+                        List<string> fruits = new List<string>();
+                        
+                        // Adding elements
+                        fruits.Add("Apple");
+                        fruits.Add("Banana");
+                        fruits.Add("Cherry");
+                        
+                        // Accessing elements
+                        Console.WriteLine(fruits[1]); // Banana
+                        
+                        // Count property
+                        Console.WriteLine(fruits.Count); // 3
+                        
+                        // Inserting elements
+                        fruits.Insert(1, "Orange");
+                        
+                        // Removing elements
+                        fruits.Remove("Banana");
+                        fruits.RemoveAt(0);
+                        
+                        // Checking existence
+                        bool hasApple = fruits.Contains("Apple");
+                        
+                        // Sorting
+                        fruits.Sort();
+                        
+                        // List initialization
+                        var numbers = new List<int> { 1, 2, 3 };
+                        
+                        // List methods
+                        numbers.AddRange(new[] { 4, 5, 6 });
+                        numbers.RemoveAll(n => n % 2 == 0); // Remove even numbers
+                        numbers.ForEach(n => Console.WriteLine(n)); // Print each number</pre>
+                </div>
+
+                <div class="note">
+                    <strong>Performance:</strong> Lists provide O(1) access by index but O(n) for search operations (Contains, IndexOf).
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+
+                <h3 id="dictionaries">Dictionaries</h3>
+                <p>The Dictionary<TKey,TValue> class represents a collection of keys and values. Each addition consists of a value and its associated key.</p>
+
+                <div class="code-example">
+                    <pre>using System.Collections.Generic;
+
+                        // Creating a dictionary
+                        Dictionary<string, int> ages = new Dictionary</string>
+                <div class="code-example">
+                    <pre>using System.Collections.Generic;
+
+                        // Creating a dictionary
+                        Dictionary<string, int> ages = new Dictionary<string, int>();
+
+                        // Adding elements
+                        ages.Add("John", 25);
+                        ages.Add("Mary", 30);
+                        ages["Peter"] = 28; // Alternative syntax
+
+                        // Accessing elements
+                        Console.WriteLine(ages["John"]); // 25
+
+                        // Count property
+                        Console.WriteLine(ages.Count); // 3
+
+                        // Checking existence
+                        bool hasJohn = ages.ContainsKey("John");
+
+                        // Removing elements
+                        ages.Remove("Mary");
+
+                        // Iterating through dictionary
+                        foreach (KeyValuePair<string, int> pair in ages)
+                        {
+                            Console.WriteLine($"{pair.Key}: {pair.Value}");
+                        }
+
+                        // Dictionary initialization
+                        var capitals = new Dictionary<string, string>
+                        {
+                            {"USA", "Washington D.C."},
+                            {"UK", "London"},
+                            {"France", "Paris"}
+                        };
+
+                        // Dictionary methods
+                        var keys = ages.Keys; // Collection of all keys
+                        var values = ages.Values; // Collection of all values</pre>
+                </div>
+
+                <div class="note">
+                    <strong>Performance:</strong> Dictionaries provide O(1) access time for lookups by key, making them ideal for fast key-value pair access.
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+            </div>
+
+            <div class="section" id="oop">
+                <h2>C# OOP</h2>
+
+                <h3 id="classes-objects">Classes/Objects</h3>
+                <p>C# is an object-oriented programming language. Classes are blueprints for creating objects (instances).</p>
+
+                <div class="code-example">
+                    <pre>// Class definition
+                        public class Person
+                        {
+                            // Fields (private by convention)
+                            private string name;
+                            private int age;
+
+                            // Properties (public interface)
+                            public string Name
+                            {
+                                get { return name; }
+                                set { name = value; }
+                            }
+
+                            public int Age
+                            {
+                                get => age;
+                                set => age = value >= 0 ? value : 0;
+                            }
+
+                            // Auto-implemented property
+                            public string Address { get; set; }
+
+                            // Method
+                            public void Greet()
+                            {
+                                Console.WriteLine($"Hello, my name is {Name}");
+                            }
+                        }
+
+                        // Using the class
+                        Person person1 = new Person();
+                        person1.Name = "John";
+                        person1.Age = 30;
+                        person1.Greet();</pre>
+                </div>
+
+                <div class="note">
+                    <strong>Encapsulation:</strong> Fields are typically private, and access is controlled through public properties and methods.
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+
+                <h3 id="methods">Methods</h3>
+                <p>Methods are blocks of code that perform specific tasks. They can accept parameters and return values.</p>
+
+                <div class="code-example">
+                    <pre>public class Calculator
+                        {
+                            // Method with parameters and return value
+                            public int Add(int a, int b)
+                            {
+                                return a + b;
+                            }
+
+                            // Method overloading (same name, different parameters)
+                            public double Add(double a, double b)
+                            {
+                                return a + b;
+                            }
+
+                            // Optional parameters
+                            public int Multiply(int a, int b = 1)
+                            {
+                                return a * b;
+                            }
+
+                            // Params keyword for variable number of arguments
+                            public int Sum(params int[] numbers)
+                            {
+                                int total = 0;
+                                foreach (int num in numbers)
+                                {
+                                    total += num;
+                                }
+                                return total;
+                            }
+                        }
+
+                        // Using methods
+                        Calculator calc = new Calculator();
+                        int sum1 = calc.Add(5, 3); // 8
+                        double sum2 = calc.Add(2.5, 3.7); // 6.2
+                        int product = calc.Multiply(4); // 4 (uses default for b)
+                        int total = calc.Sum(1, 2, 3, 4, 5); // 15</pre>
+                </div>
+
+                <div class="note">
+                    <strong>Method Signatures:</strong> Methods are uniquely identified by their name and parameter types (method overloading).
+                </div>
+
+                <button class="tryit-button" onclick="runCSharpCode('using System;\n\npublic class Calculator\n{\n    public int Add(int a, int b)\n    {\n        return a + b;\n    }\n    \n    public double Add(double a, double b)\n    {\n        return a + b;\n    }\n    \n    public int Multiply(int a, int b = 1)\n    {\n        return a * b;\n    }\n    \n    public int Sum(params int[] numbers)\n    {\n        int total = 0;\n        foreach (int num in numbers)\n        {\n            total += num;\n        }\n        return total;\n    }\n}\n\nclass Program\n{\n    static void Main()\n    {\n        Calculator calc = new Calculator();\n        Console.WriteLine(calc.Add(5, 3));\n        Console.WriteLine(calc.Add(2.5, 3.7));\n        Console.WriteLine(calc.Multiply(4));\n        Console.WriteLine(calc.Sum(1, 2, 3, 4, 5));\n    }\n}')">Try it Yourself</button>
+
+                <h3 id="constructors">Constructors</h3>
+                <p>Constructors are special methods that are called when an object is created. They initialize the object's state.</p>
+
+                <div class="code-example">
+                    <pre>public class Car
+                        {
+                            public string Make { get; }
+                            public string Model { get; }
+                            public int Year { get; }
+
+                            // Default constructor
+                            public Car()
+                            {
+                                Make = "Unknown";
+                                Model = "Unknown";
+                                Year = DateTime.Now.Year;
+                            }
+
+                            // Parameterized constructor
+                            public Car(string make, string model, int year)
+                            {
+                                Make = make;
+                                Model = model;
+                                Year = year;
+                            }
+
+                            // Constructor chaining
+                            public Car(string make, string model) : this(make, model, DateTime.Now.Year)
+                            {
+                            }
+
+                            // Copy constructor
+                            public Car(Car otherCar)
+                            {
+                                Make = otherCar.Make;
+                                Model = otherCar.Model;
+                                Year = otherCar.Year;
+                            }
+                        }
+
+                        // Using constructors
+                        Car car1 = new Car(); // Default constructor
+                        Car car2 = new Car("Toyota", "Corolla", 2020); // Parameterized
+                        Car car3 = new Car("Honda", "Civic"); // Chained constructor
+                        Car car4 = new Car(car2); // Copy constructor</pre>
+                </div>
+
+                <div class="warning">
+                    <strong>Note:</strong> If you don't define any constructors, C# provides a default parameterless constructor. If you define any constructor, the default one is not provided.
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+
+                <h3 id="inheritance">Inheritance</h3>
+                <p>Inheritance allows a class to inherit fields and methods from another class. C# supports single inheritance (a class can inherit from only one base class).</p>
+
+                <div class="code-example">
+                    <pre>// Base class
+                        public class Animal
+                        {
+                            public string Name { get; set; }
+
+                            public void Eat()
+                            {
+                                Console.WriteLine($"{Name} is eating.");
+                            }
+
+                            public virtual void MakeSound()
+                            {
+                                Console.WriteLine("The animal makes a sound");
+                            }
+                        }
+
+                        // Derived class
+                        public class Dog : Animal
+                        {
+                            public string Breed { get; set; }
+
+                            // Method overriding
+                            public override void MakeSound()
+                            {
+                                Console.WriteLine("Woof woof!");
+                            }
+
+                            // New method
+                            public void Fetch()
+                            {
+                                Console.WriteLine($"{Name} is fetching.");
+                            }
+                        }
+
+                        // Using inheritance
+                        Dog myDog = new Dog();
+                        myDog.Name = "Buddy";
+                        myDog.Breed = "Golden Retriever";
+                        myDog.Eat(); // Inherited from Animal
+                        myDog.MakeSound(); // Overridden method
+                        myDog.Fetch(); // Dog-specific method</pre>
+                </div>
+
+                <div class="note">
+                    <strong>Polymorphism:</strong> The <code>virtual</code> keyword allows methods to be overridden in derived classes, enabling polymorphic behavior.
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+            </div>
+
+            <div class="section" id="advanced">
+                <h2>C# Advanced</h2>
+
+                <h3 id="exception-handling">Exception Handling</h3>
+                <p>Exception handling allows you to deal with unexpected runtime errors gracefully using try-catch blocks.</p>
+
+                <div class="code-example">
+                    <pre>try
+                        {
+                            // Code that might throw an exception
+                            int divisor = 0;
+                            int result = 10 / divisor;
+                        }
+                        catch (DivideByZeroException ex)
+                        {
+                            Console.WriteLine("Cannot divide by zero");
+                            Console.WriteLine(ex.Message);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("An error occurred");
+                            Console.WriteLine(ex.Message);
+                        }
+                        finally
+                        {
+                            // Code that always executes
+                            Console.WriteLine("Cleanup code here");
+                        }
+
+                        // Throwing exceptions
+                        void ValidateAge(int age)
+                        {
+                            if (age < 0)
+                            {
+                                throw new ArgumentException("Age cannot be negative", nameof(age));
+                            }
+                        }
+
+                        try
+                        {
+                            ValidateAge(-5);
+                        }
+                        catch (ArgumentException ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }</pre>
+                </div>
+
+                <div class="warning">
+                    <strong>Best Practice:</strong> Catch specific exceptions rather than using a general Exception catch block when possible.
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+
+                <h3 id="file-handling">File Handling</h3>
+                <p>C# provides various classes in the System.IO namespace for working with files and directories.</p>
+
+                <div class="code-example">
+                    <pre>using System;
+                        using System.IO;
+
+                        // Writing to a file
+                        string filePath = "example.txt";
+                        File.WriteAllText(filePath, "Hello, File I/O!");
+
+                        // Reading from a file
+                        string content = File.ReadAllText(filePath);
+                        Console.WriteLine(content);
+
+                        // File info
+                        FileInfo fileInfo = new FileInfo(filePath);
+                        Console.WriteLine($"Size: {fileInfo.Length} bytes");
+                        Console.WriteLine($"Created: {fileInfo.CreationTime}");
+
+                        // Working with directories
+                        string dirPath = "ExampleDir";
+                        if (!Directory.Exists(dirPath))
+                        {
+                            Directory.CreateDirectory(dirPath);
+                        }
+
+                        // Get files
+                        string[] files = Directory.GetFiles(dirPath);
+                        foreach (string file in files)
+                        {
+                            Console.WriteLine(file);
+                        }
+
+                        // StreamWriter and StreamReader
+                        using (StreamWriter writer = new StreamWriter("data.txt"))
+                        {
+                            writer.WriteLine("Line 1");
+                            writer.WriteLine("Line 2");
+                        }
+
+                        using (StreamReader reader = new StreamReader("data.txt"))
+                        {
+                            string line;
+                            while ((line = reader.ReadLine()) != null)
+                            {
+                                Console.WriteLine(line);
+                            }
+                        }</pre>
+                </div>
+
+                <div class="note">
+                    <strong>Using Statement:</strong> The <code>using</code> statement ensures proper disposal of file resources, even if an exception occurs.
+                </div>
+
+                <div class="warning">
+                    <strong>Note:</strong> File operations won't work in this demo environment.
+                </div>
+
+                <h3 id="linq">LINQ</h3>
+                <p>Language Integrated Query (LINQ) provides a consistent way to query various data sources in C#.</p>
+
+                <div class="code-example">
+                    <pre>using System;
+                        using System.Linq;
+                        using System.Collections.Generic;
+
+                        List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+                        
+                        // Query syntax
+                        var evenNumbers = from num in numbers
+                                          where num % 2 == 0
+                                          select num;
+                        
+                        // Method syntax
+                        var oddNumbers = numbers.Where(n => n % 2 != 0);
+                        
+                        // Ordering
+                        var orderedNumbers = from num in numbers
+                                             orderby num descending
+                                             select num;
+                        
+                        // Aggregation
+                        int sum = numbers.Sum();
+                        int max = numbers.Max();
+                        double average = numbers.Average();
+                        
+                        // Projection
+                        var squares = numbers.Select(n => n * n);
+                        
+                        // Grouping
+                        var numberGroups = from num in numbers
+                                           group num by num % 3 into g
+                                           select new { Remainder = g.Key, Numbers = g };
+                        
+                        // Joining
+                        List<string> words = new List<string> { "one", "two", "three" };
+                        var joined = from num in numbers
+                                     join word in words on num equals words.IndexOf(word) + 1
+                                     select new { Number = num, Word = word };
+                        
+                        // Executing queries
+                        foreach (var num in evenNumbers)
+                        {
+                            Console.WriteLine(num);
+                        }
+
+                        foreach (var group in numberGroups)
+                        {
+                            Console.WriteLine($"Numbers with remainder {group.Remainder}:");
+                            foreach (var num in group.Numbers)
+                            {
+                                Console.WriteLine(num);
+                            }
+                        }</pre>
+                </div>
+
+                <div class="note">
+                    <strong>Deferred Execution:</strong> LINQ queries are not executed until you iterate over them (e.g., in a foreach loop).
+                </div>
+
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+
+
+                <h3 id="async-await">Async/Await</h3>
+                <p>The async and await keywords in C# simplify asynchronous programming, making it easier to write code that performs long-running operations without blocking.</p>
+
+                <div class="code-example">
+                    <pre>using System;
+                        using System.Net.Http;
+                        using System.Threading.Tasks;
+
+                        class Program
+                        {
+                            static async Task Main(string[] args)
+                            {
+                                Console.WriteLine("Starting async operation...");
+
+                                // Call async method
+                                string result = await DownloadContentAsync();
+
+                                Console.WriteLine(result);
+                                Console.WriteLine("Async operation completed.");
+                            }
+
+                            static async Task<string> DownloadContentAsync()
+                            {
+                                using (HttpClient client = new HttpClient())
+                                {
+                                    // Async network call
+                                    HttpResponseMessage response = await client.GetAsync("https://example.com");
+                                    response.EnsureSuccessStatusCode();
+                                    return await response.Content.ReadAsStringAsync();
+                                }
+                            }
+
+                            static async Task MultipleAsyncOperations()
+                            {
+                                Task<string> task1 = Task.Delay(1000).ContinueWith(_ => "Task 1");
+                                Task<string> task2 = Task.Delay(1500).ContinueWith(_ => "Task 2");
+                                
+                                // Wait for all tasks to complete
+                                await Task.WhenAll(task1, task2);
+                                Console.WriteLine($"{task1.Result}, {task2.Result}");
+                                
+                                // Wait for any task to complete
+                                Task<string> firstTask = await Task.WhenAny(task1, task2);
+                                Console.WriteLine($"First completed: {firstTask.Result}");
+                            }
+                        }</pre>
+                </div>
+
+                <div class="note">
+                    <strong>Async Best Practices:</strong>
+                    <ul>
+                        <li>Use <code>async</code> all the way up the call chain</li>
+                        <li>Avoid <code>async void</code> (use <code>async Task</code> instead)</li>
+                        <li>Use <code>ConfigureAwait(false)</code> in library code</li>
+                        <li>Prefer <code>Task.WhenAll</code> over multiple awaits</li>
+                    </ul>
+                </div>
+
+                <div class="warning">
+                    <strong>Note:</strong> Network operations won't work in this demo environment.
+                </div>
+                <div class="demo">
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+            </div>
+        {% else %} 
+            <div id="authModal" class="modal">
+                <div class="modal-content">
+                  <h2>Login Required</h2>
+                  <p>You need to <strong>login</strong> or <strong>sign up</strong> to continue reading this content.</p>
+                  <a href="/login"><button class="btn login-btn">Login</button></a>
+                  <a href="/signup"><button class="btn signup-btn">Sign Up</button></a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        // Function to run C# code in demo
+        function runCSharpCode(code) {
+            try {
+                // In a real implementation, this would connect to a C# compiler/interpreter
+                // For this demo, we'll just show the output in an alert
+                alert("Running C# code:\n\n" + code + "\n\n(Output would appear here in a real environment)");
+            } catch (e) {
+                alert("Error running C# code: " + e.message);
+            }
+        }
+        
+        // Navigation handling
+        document.querySelectorAll('.topic-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.topic-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Scroll to section if a subtopic is clicked
+                if (event.target.classList.contains('subtopic')) {
+                    const sectionId = event.target.textContent.trim().toLowerCase().replace(' ', '-');
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+        
+        document.querySelectorAll('.subtopic').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const sectionId = this.textContent.trim().toLowerCase().replace(' ', '-');
+                const section = document.getElementById(sectionId);
+                
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Initialize the page with first section visible
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('what-is-csharp').scrollIntoView();
+        });
+        
+    // Function to show auth modal
+    function showAuthModal() {
+        document.getElementById("authModal").style.display = "block";
+    }
+    
+    document.querySelectorAll('.subtopic').forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const userEmail = getCookie("user_email");
+            const sectionId = this.textContent.trim().toLowerCase().replace(' ', '-');
+            const section = document.getElementById(sectionId);
+            
+            // Check if user is trying to access non-intro content without login
+            const isIntroTopic = this.closest('.topic-item').textContent.includes('Introduction');
+            
+            if (!userEmail && !isIntroTopic) {
+                showAuthModal();
+                return; // Don't proceed with navigation
+            }
+            
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Get a cookie value by name
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    </script>
+</body>
+</html>

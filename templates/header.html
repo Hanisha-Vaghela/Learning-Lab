@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/header.css">
+  <link rel="icon" href="/static/img/logo-transparent-png.png" type="image/icon type">
+</head>
+<body>
+<header class="header">
+    <div class="logo">
+        <a href="/"><img src="/static/img/logo-transparent-png.png" alt="Logo" width="120px" height="100px"></a>
+    </div>
+    <ul class="nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/generate">Get Certified</a></li>
+      <li><a href="/service">Service</a></li>
+    </ul>
+
+    <div class="auth-buttons">
+        {% if request.COOKIES.user_email %}
+            <a href="/profile" class="profile-icon" style="padding: 0;border: none;width: 30px;height: 30px;">
+                <img src="/static/img/OIP-removebg.png" alt="Profile" width="30px" height="30px">
+            </a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/signup">Sign Up</a>
+            <a href="/login">Login</a>
+        {% endif %}
+    </div>
+</header>
+</body>
+</html>

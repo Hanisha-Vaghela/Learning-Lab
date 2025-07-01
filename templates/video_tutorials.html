@@ -1,0 +1,118 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LearningLab | Sidebar Video Tutorials</title>
+</head>
+{% if video_tutorial %}
+        <p>{{ video_tutorial.page|safe }}</p>
+    {% else %}
+        {% for video_tutorial in video_tutorials %}
+            <p>{{ video_tutorial.page|safe }}</p>
+        {% endfor %}
+    {% endif %}
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LearningLab | Sidebar Video Tutorials</title>
+  <style>
+    /* Modal Styles */
+    .modal-active {
+            overflow: hidden;
+        }
+    
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+    
+        .modal-content {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 16px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            animation: fadeIn 0.4s ease-out;
+        }
+    
+        .modal-content h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+    
+        .modal-content p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+    
+        .modal-content button {
+            margin: 8px;
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+    
+        .modal-content button:hover {
+            background-color: #0056b3;
+        }
+    
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    
+        @media (max-width: 500px) {
+            .container {
+                padding: 25px 20px;
+            }
+    
+            input, select, button[type="submit"] {
+                font-size: 14px;
+            }
+        }
+  </style>
+</head>
+{% if video_tutorial %}
+    {% if request.COOKIES.user_email %}
+        <p>{{ video_tutorial.page|safe }}</p>
+    {% else %}
+        <div class="modal" id="loginModal">
+            <div class="modal-content">
+                <h2>Access Restricted</h2>
+                <p>Please log in or sign up to view your certificate.</p>
+                <button onclick="location.href='/login/'">Log In</button>
+                <button onclick="location.href='/signup/'">Sign Up</button>
+            </div>
+        </div>
+        <script>
+            document.body.classList.add('modal-active');
+            document.getElementById("loginModal").style.display = "flex";
+        </script>
+    {% endif %}
+{% else %}
+    {% for video_tutorial in video_tutorials %}
+        <p>{{ video_tutorial.page|safe }}</p>
+    {% endfor %}
+{% endif %}
+</html>

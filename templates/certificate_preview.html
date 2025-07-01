@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Certificate Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+        .certificate-container {
+            background-color: white;
+            border: 15px solid #f8d347;
+            padding: 50px;
+            width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .certificate-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .certificate-body {
+            font-size: 18px;
+            margin: 30px 0;
+        }
+        .recipient-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+        .course-name {
+            font-size: 24px;
+            color: #3498db;
+            margin: 20px 0;
+        }
+        .completion-date {
+            font-size: 16px;
+            margin-top: 40px;
+        }
+        .actions {
+            margin-top: 30px;
+        }
+        .actions button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+        .download-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="certificate-container">
+        <div class="certificate-title">Certificate of Completion</div>
+        <div class="certificate-body">
+            This is to certify that
+            <div class="recipient-name">{{ name }}</div>
+            has successfully completed the course
+            <div class="course-name">{{ course }}</div>
+            with dedication and commitment.
+        </div>
+        <div class="completion-date">
+            Completed on: {{ completion_date }}
+        </div>
+    </div>
+    
+    <div class="actions">
+        <form method="POST" action="{% url 'download_certificate_pdf' %}">
+            {% csrf_token %}
+            <button type="submit" class="download-btn">Download PDF</button>
+        </form>
+        <form method="POST" action="{% url 'save_certificate' %}">
+            {% csrf_token %}
+            <button type="submit" class="save-btn">Save Certificate</button>
+        </form>
+    </div>
+</body>
+</html>

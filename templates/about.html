@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - LearningLab</title>
+  <link rel="icon" href="/static/img/logo-transparent-png.png" type="image/icon type" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0e0f13;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 40px 60px;
+    }
+
+    .intro {
+      text-align: center;
+      background: #16181f;
+      padding: 65px 20px 30px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #2a2d34;
+    }
+
+    .intro h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .intro p {
+      font-size: 1.1em;
+      color: #cccccc;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .two-column {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 280px;
+      background-color: #1d1f25;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.04);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .card p,
+    .card ul {
+      color: #cfcfcf;
+      font-size: 0.95em;
+    }
+
+    .card ul {
+      padding-left: 20px;
+    }
+
+    .card ul li {
+      margin-bottom: 8px;
+    }
+
+    .team-section {
+      text-align: center;
+      background-color: #181a1f;
+      padding-top: 30px;
+    }
+
+    .team-section h2 {
+      font-size: 2em;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .team-member {
+      background-color: #22242b;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 250px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.04);
+    }
+
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .team-member h3 {
+      margin-bottom: 8px;
+      font-size: 1.2em;
+      color: #f9f9f9;
+    }
+
+    .team-member p {
+      font-size: 0.9em;
+      color: #c2c2c2;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 30px 20px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .team-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Intro Section -->
+  <section class="intro">
+    <h1>Discover LearningLab</h1>
+    <p>LearningLab is your go-to destination for practical, affordable, and flexible coding education. Whether you're just starting or looking to sharpen your skills, we're here to make your tech journey smoother and smarter.</p>
+  </section>
+
+  <!-- Our Story & Mission -->
+  <section class="two-column">
+    <div class="card">
+      <h2>Our Story</h2>
+      <p>Founded by educators and tech enthusiasts, LearningLab was built to make learning code more accessible. Tired of outdated systems, we created a space where learning is guided, hands-on, and built for modern learners.</p>
+      <p>Today, we serve thousands of students across regions, helping them unlock potential and build real-world solutions.</p>
+    </div>
+
+    <div class="card">
+      <h2>Our Mission</h2>
+      <p>We aim to break the barriers of tech education by making it inclusive, affordable, and goal-driven.</p>
+      <ul>
+        <li><strong>Hands-On Projects:</strong> Learn by building</li>
+        <li><strong>Expert Mentors:</strong> Get support from real developers</li>
+        <li><strong>No Pressure:</strong> Learn at your own pace</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- What We Offer & Why Choose Us -->
+  <section class="two-column">
+    <div class="card">
+      <h2>What We Offer</h2>
+      <ul>
+        <li>Free online courses in HTML, CSS, JS, Python, C, and C#</li>
+        <li>Interactive tutorials and exercises</li>
+        <li>Self-paced certification programs</li>
+        <li>Updated content with real-world scenarios</li>
+        <li>Student dashboards and progress tracking</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Why Choose Us?</h2>
+      <p>We’re not just a platform — we’re your learning partner. Our community-first approach ensures you're never learning alone.</p>
+      <ul>
+        <li><strong>Active Support:</strong> Get help when you need it</li>
+        <li><strong>Community Driven:</strong> Learn with peers, grow with feedback</li>
+        <li><strong>Industry Relevance:</strong> Stay updated with the latest tech</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section">
+    <h2>Meet Our Core Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="/static/img/hanisha.jpg" alt="Hanisha Vaghela">
+        <h3>Hanisha Vaghela</h3>
+        <p>Founder & CEO<br>Leads our platform with vision and dedication to make learning accessible for all.</p>
+      </div>
+      <div class="team-member">
+        <img src="/static/img/renuka.jpg" alt="Renuka Soni">
+        <h3>Renuka Soni</h3>
+        <p>Lead Instructor<br>Crafts engaging and clear curriculums for beginner to advanced learners.</p>
+      </div>
+      <div class="team-member">
+        <img src="/static/img/smit(1).jpg" alt="Smit Prajapati">
+        <h3>Smit Prajapati</h3>
+        <p>Community Manager<br>Supports learners and builds a strong, collaborative student community.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html> 
+
+{% endblock %}

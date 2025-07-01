@@ -1,0 +1,113 @@
+html {
+  font-size: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .first-view {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .image-content img {
+    margin: 20px 0;
+    width: 90%;
+    height: auto;
+  }
+
+  .text-content h1,
+  .text-content p {
+    margin-left: 0;
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .text-content h1 {
+    font-size: 2.2rem;
+  }
+}
+
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 40px auto;
+}
+
+.carousel .list {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 24px;
+}
+
+.carousel .list .item {
+  min-width: 320px;
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  margin: 0 8px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.carousel .list .item .content {
+  background: rgba(255,255,255,0.85);
+  padding: 16px;
+  border-radius: 0 0 16px 16px;
+  width: 100%;
+}
+
+.arrows {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.arrows button {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.arrows button:hover {
+  background: #444;
+}
+
+@media screen and (max-width: 600px) {
+  .content .title,
+  .content .name {
+    font-size: 1.8rem;
+  }
+
+  .content .des {
+    font-size: 0.9rem;
+  }
+
+  .content .btn button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .carousel .list .item {
+    height: 180px;
+  }
+
+  .arrows button {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+}

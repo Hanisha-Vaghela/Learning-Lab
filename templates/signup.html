@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            margin: 0;
+        }
+    
+        .form-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            transition: transform 0.3s ease;
+        }
+    
+        .form-container:hover {
+            transform: scale(1.01);
+        }
+    
+        .form-group {
+            margin-bottom: 20px;
+        }
+    
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+    
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+            font-size: 14px;
+        }
+    
+        input:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+    
+        button {
+            background: linear-gradient(to right, #4a90e2, #007aff);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+    
+        button:hover {
+            background: linear-gradient(to right, #3a7bd5, #005eff);
+            transform: scale(1.02);
+        }
+    
+        h3 {
+            text-align: center;
+            margin: 20px 0 10px;
+            color: #555;
+            font-weight: 400;
+        }
+    
+        a {
+            text-decoration: none;
+            display: block;
+        }
+    
+        .form-container a button {
+            margin-top: 10px;
+            background: linear-gradient(to right, #56ccf2, #2f80ed);
+        }
+    
+        .form-container a button:hover {
+            background: linear-gradient(to right, #2f80ed, #1c6dd0);
+        }
+    
+        p {
+            color: red;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="form-container" >
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form action="/submit/">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" id="name" name="username" required>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" id="password" name="password" required> 
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <h3>Already have an account?</h3>
+        <a href="/login"><button>Login</button></a>
+    </div>
+</body>
+</html>

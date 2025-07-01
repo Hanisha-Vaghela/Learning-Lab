@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Performance & Ranking Report - LearningLab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    header {
+      background: #1f1f1f;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    header h1 {
+      margin: 0;
+      color: #00bcd4;
+      font-size: 2rem;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section {
+      background: #1e1e1e;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+    }
+    .section h2 {
+      margin-top: 0;
+      color: #03dac5;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .card {
+      background-color: #2a2a2a;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      margin: 0.5rem 0;
+      color: #ffffff;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: #cccccc;
+    }
+    .highlight {
+      color: #00e676;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .rank-badge {
+      background-color: #00bcd4;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      color: #000;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 600px) {
+      .card h3 {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Performance & Ranking Report - LearningLab</h1>
+</header>
+
+<div class="container">
+  <!-- Student Performance -->
+  <div class="section">
+    <h2>Student Performance Overview</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Active Students</h3>
+        <p class="highlight">1,245</p>
+        <p>Students learning across all courses</p>
+      </div>
+      <div class="card">
+        <h3>Courses Completed</h3>
+        <p class="highlight">3,980</p>
+        <p>Total completions since launch</p>
+      </div>
+      <div class="card">
+        <h3>Average Completion Rate</h3>
+        <p class="highlight">76%</p>
+        <p>Engagement across all languages</p>
+      </div>
+      <div class="card">
+        <h3>Top Language</h3>
+        <p class="highlight">Python</p>
+        <p>Most enrolled and completed</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Performance -->
+  <div class="section">
+    <h2>Website Performance</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Site Uptime</h3>
+        <p class="highlight">99.97%</p>
+        <p>Last 30 days</p>
+      </div>
+      <div class="card">
+        <h3>Daily Visitors</h3>
+        <p class="highlight">3,200+</p>
+        <p>Average daily traffic</p>
+      </div>
+      <div class="card">
+        <h3>Monthly Bandwidth</h3>
+        <p class="highlight">8.4 TB</p>
+        <p>Data served across all pages</p>
+      </div>
+      <div class="card">
+        <h3>Peak Load Time</h3>
+        <p class="highlight">0.8s</p>
+        <p>On high traffic hours</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ranking Section -->
+  <div class="section">
+    <h2>LearningLab Rankings</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>State Level</h3>
+        <p class="highlight">#3</p>
+        <p>Top 3 among e-learning platforms</p>
+        <div class="rank-badge">Top Performer</div>
+      </div>
+      <div class="card">
+        <h3>Regional Level</h3>
+        <p class="highlight">#7</p>
+        <p>Consistently improving in Western Zone</p>
+        <div class="rank-badge">Emerging Star</div>
+      </div>
+      <div class="card">
+        <h3>Course Popularity Index</h3>
+        <p class="highlight">89/100</p>
+        <p>Student feedback and engagement based</p>
+        <div class="rank-badge">High Engagement</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

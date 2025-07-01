@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service</title>
+    <link rel="stylesheet" href="/static/css/service.css">
+    <link rel="icon" href="/static/img/logo-transparent-png.png" type="image/icon type">
+</head>
+<body>
+    
+<!--service-->
+<div class="service-swipe">
+    <div class="diffSection" id="services_section" style="margin-left: 400px;">
+        <p class="service-title">Services</p><!--style="font-size: 50px; padding: 100px; padding-bottom: 40px; color: #edeaea;"-->
+    </div>
+    <a href=""><div class="s-card"  style="box-shadow:none;border: none;transition: duration 0;cursor: auto;" ><img src=""><p></p></div></a>
+    <a href="/f_course"><div class="s-card" ><img src="/static/img/computer-courses.png"><p>Free Online Computer Courses</p></div></a>
+    <a href="https://www.hackerearth.com/getstarted-competitive-programming/"><div class="s-card" ><img src="/static/img/img_service/123.jpg"><p>Building Concepts for Competitive Exams</p></div></a>
+    <a href="{% url 'video_tutorials' 'html' %}"><div class="s-card"><img src="/static/img/online-tutorials.png"><p>Online Video Lectures</p></div></a>
+    <a href="https://testbook.com/previous-year-papers"><div class="s-card"><img src="/static/img/papers.jpg"><p>Sample Papers of Various Competitive Exams</p></div></a>
+    <a href="/report"><div class="s-card"><img src="/static/img/p3.png"><p>Performance and Ranking Report</p></div></a>
+    <a href="/contact_tutor"><div class="s-card"><img src="/static/img/discussion.png"><p>Discussion with Our Tutors & Mentors</p></div></a>
+    <a href="https://www.pskills.org/html.jsp"><div class="s-card"><img src="/static/img/q1.png"><p>Daily Brain Teasing Questions to Improve IQ</p></div></a>
+    <a href="#contactus_section"><div class="s-card"><img src="/static/img/help.png"><p>24x7 Online Support</p></div></a>
+</div> 
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+    
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #dfe9f3, #ffffff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+    
+        .container {
+            background: #fff;
+            margin: 60px auto;
+            padding: 40px 30px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease;
+        }
+    
+        .container:hover {
+            transform: translateY(-2px);
+        }
+    
+        h2 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        label {
+            text-align: left;
+            font-weight: 500;
+            margin-top: 15px;
+            color: #34495e;
+        }
+    
+        input,
+        select {
+            margin-top: 6px;
+            padding: 12px;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+    
+        input:focus,
+        select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+    
+        button[type="submit"] {
+            margin-top: 25px;
+            background: linear-gradient(to right, #28a745, #218838);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    
+        button[type="submit"]:hover {
+            background: linear-gradient(to right, #218838, #1e7e34);
+            transform: translateY(-1px);
+        }
+    
+        /* Modal Styles */
+        .modal-active {
+            overflow: hidden;
+        }
+    
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+    
+        .modal-content {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 16px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            animation: fadeIn 0.4s ease-out;
+        }
+    
+        .modal-content h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+    
+        .modal-content p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+    
+        .modal-content button {
+            margin: 8px;
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+    
+        .modal-content button:hover {
+            background-color: #0056b3;
+        }
+    
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    
+        @media (max-width: 500px) {
+            .container {
+                padding: 25px 20px;
+            }
+    
+            input, select, button[type="submit"] {
+                font-size: 14px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    {% if request.COOKIES.user_email %}
+        <div class="container">
+            <h2>Certificate Generator</h2>
+            <form method="POST">
+                {% csrf_token %}
+
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" value="{{ username }}" placeholder="Enter Your Full Name" required>
+            
+                <label for="course">Select Course:</label>
+                <select id="course" name="course" required ">
+                    <option value="">-- Select a Course --</option>
+                    <option value="Full Stack Development">Full Stack Development</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Machine Learning">Machine Learning</option>
+                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                    <option value="Cyber Security">Cyber Security</option>
+                    <option value="Data Management">Data Management</option>
+                    <option value="Cloud Management">Cloud Management</option>
+                    <option value="App Development">App Development</option>
+                    <option value="VFX & Animation">VFX & Animation</option>
+                </select>
+            
+                <label for="completion_date">Completion Date:</label>
+                <input type="date" id="completion_date" name="completion_date" required>
+            
+                <button type="submit">Generate Certificate</button>
+            </form>
+        </div>
+    {% else %}
+        <div class="modal" id="loginModal">
+            <div class="modal-content">
+                <h2>Access Restricted</h2>
+                <p>Please log in or sign up to view your certificate.</p>
+                <button onclick="location.href='/login/'">Log In</button>
+                <button onclick="location.href='/signup/'">Sign Up</button>
+            </div>
+        </div>
+        <script>
+            document.body.classList.add('modal-active');
+            document.getElementById("loginModal").style.display = "flex";
+        </script>
+    {% endif %}
+    
+</body>
+</html>

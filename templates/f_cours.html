@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Online Computer Courses</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background: #1f1f1f;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    header h1 {
+      color: #00bcd4;
+      margin: 0;
+    }
+    .description {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: center;
+      color: #cccccc;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .card {
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h2 {
+      color: #03dac5;
+      margin-top: 0;
+    }
+    .card p {
+      font-size: 0.95rem;
+      margin: 1rem 0;
+      color: #bbbbbb;
+    }
+    .card a.button {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      color: #fff;
+      background-color: #03dac5;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+    .card a.button:hover {
+      background-color: #028e84;
+    }
+    @media (max-width: 600px) {
+      .card p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Free Online Computer Courses</h1>
+  </header>
+
+  <div class="description">
+    Learn top programming languages online — free and from anywhere. These courses work through our platform, offering structured tutorials. Whether you're a beginner or brushing up your skills, our training is accessible 24/7. Designed for self-paced learning, all materials are curated by professionals to guide you step by step. Start anytime, anywhere — all you need is the internet and curiosity.
+  </div>
+
+  <div class="grid-container">
+    <div class="card">
+      <h2>HTML</h2>
+      <p>HTML (HyperText Markup Language) is the foundation of all web pages. Learn how to structure content and build the base of any website.</p>
+      <a class="button" href="{% url 'tutorials' 'html' %}">Tutorials</a>
+    </div>
+    <div class="card">
+      <h2>CSS</h2>
+      <p>CSS adds style to your web pages. Learn to create visually stunning, responsive, and modern layouts with animations and themes.</p>
+      <a class="button" href="{% url 'tutorials' 'css' %}">Tutorials</a>
+    </div>
+    <div class="card">
+      <h2>JavaScript</h2>
+      <p>JavaScript brings interactivity to websites. Learn DOM manipulation, event handling, animations, and dynamic content loading.</p>
+      <a class="button" href="{% url 'tutorials' 'js' %}">Tutorials</a>
+    </div>
+    <div class="card">
+      <h2>C</h2>
+      <p>Start programming with C — a powerful language used in systems programming, embedded devices, and application development.</p>
+      <a class="button" href="{% url 'tutorials' 'c' %}">Tutorials</a>
+    </div>
+    <div class="card">
+      <h2>C# (C_Sharp)</h2>
+      <p>Learn C#, a modern object-oriented language used in game development, enterprise software, and .NET applications.</p>
+      <a class="button" href="{% url 'tutorials' 'c_sharp' %}">Tutorials</a>
+    </div>
+    <div class="card">
+      <h2>Python</h2>
+      <p>Python is easy to learn and powerful. It’s great for web apps, data science, AI, and automation. Start writing real Python code now.</p>
+      <a class="button" href="{% url 'tutorials' 'python' %}">Tutorials</a>
+    </div>
+  </div>
+</body>
+</html>

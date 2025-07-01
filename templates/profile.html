@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/static/css/header.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #333;
+        }
+    
+        .profile-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px 50px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            animation: fadeIn 1s ease-in-out;
+        }
+    
+        .profile-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+    
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #2980b9;
+            object-fit: cover;
+            margin-right: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    
+        .profile-info h1 {
+            font-size: 28px;
+            margin: 0;
+            color: #2c3e50;
+        }
+    
+        .profile-info p {
+            color: #555;
+            font-size: 15px;
+            margin-top: 5px;
+        }
+    
+        .profile-details {
+            margin-top: 30px;
+        }
+    
+        h1 {
+            color: #34495e;
+            margin-top: 40px;
+            font-size: 26px;
+        }
+    
+        p {
+            font-size: 17px;
+            color: #555;
+            margin: 10px 0;
+        }
+    
+        .logout-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin-top: 30px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+    
+        .logout-btn:hover {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+    
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="/static/img/user_icon.png" alt="Profile Picture" class="profile-pic">
+            <div class="profile-info">
+                <h1>Profile</h1>
+                <p>Member since: {{ user.date_joined|date:"F Y" }}</p>
+            </div>
+        </div>
+
+        <h1>Welcome, {{ username }}</h1>
+        <p>Email: {{ email }}</p>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+</body>
+</html>
+    </div>
+</body>
+</html>

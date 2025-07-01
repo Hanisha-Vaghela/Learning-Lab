@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete C Tutorial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-content {
+          background-color: #fff;
+          margin: 10% auto;
+          padding: 30px;
+          border-radius: 12px;
+          width: 400px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+          text-align: center;
+        }
+    
+        .modal-content h2 {
+          margin-top: 0;
+          color: #333;
+        }
+    
+        .modal-content p {
+          font-size: 16px;
+          color: #666;
+        }
+    
+        .btn {
+          margin: 10px 5px;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 6px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+    
+        .login-btn {
+          background-color: #007bff;
+          color: white;
+        }
+    
+        .signup-btn {
+          background-color: #28a745;
+          color: white;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #8e44ad; /* Purple for C */
+            color: white;
+            padding: 20px 0;
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #9b59b6; /* Darker purple */
+        }
+
+        .sidebar h2 {
+            margin-bottom: 10px;
+        }
+
+        .topics-list {
+            list-style-type: none;
+        }
+
+        .topic-item {
+            padding: 10px 20px;
+            border-bottom: 1px solid #9b59b6; /* Darker purple */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .topic-item:hover {
+            background-color: #9b59b6; /* Darker purple */
+        }
+
+        .topic-item.active {
+            background-color: #2c3e50;
+        }
+
+        .subtopics {
+            list-style-type: none;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .topic-item.active .subtopics {
+            display: block;
+        }
+
+        .subtopic {
+            padding: 8px 10px 8px 30px;
+            font-size: 0.9em;
+            color: #ecf0f1;
+            cursor: pointer;
+        }
+
+        .subtopic:hover {
+            color: #8e44ad;
+        }
+
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+            scroll-behavior: smooth;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            scroll-margin-top: 20px;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8e44ad; /* Purple underline */
+        }
+
+        .section h3 {
+            color: #9b59b6; /* Darker purple */
+            margin: 20px 0 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .code-example {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-left: 4px solid #8e44ad; /* Purple left border */
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .demo {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #8e44ad; /* Purple header */
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            background-color: #8e44ad; /* Purple button */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #9b59b6; /* Darker purple button hover */
+        }
+
+        .note {
+            background-color: #e7f4ff;
+            border-left: 4px solid #8e44ad;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+
+        .warning {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        
+        /* Add this new style for restricted content */
+        .restricted-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>C Tutorial</h2>
+            <p>Complete C Guide</p>
+        </div>
+        <ul class="topics-list">
+            <li class="topic-item active">
+                <div>C Introduction</div>
+                <ul class="subtopics">
+                    <a href="#what-is-c" style="text-decoration: none;scroll-behavior:smooth;"><li class="subtopic">What is C?</li></a>
+                    <li class="subtopic">C Basics</li>
+                    <a href="#c-environment-setup" style="text-decoration: none;behavior: smooth;"><li class="subtopic">C Environment Setup</li></a>
+                </ul>
+            </li>
+            <li class="topic-item">
+                <div>C Basics</div>
+                <ul class="subtopics">
+                    <a href="#variables-data-types" style="text-decoration: none;"><li class="subtopic">Variables & Data Types</li></a>
+                    <li class="subtopic">Operators</li>
+                    <li class="subtopic">Control Structures</li>
+                    <li class="subtopic">Functions</li>
+                </ul>
+            </li>
+            <li class="topic-item">
+                <div>C Arrays & Pointers</div>
+                <ul class="subtopics">
+                    <li class="subtopic">Arrays</li>
+                    <li class="subtopic">Pointers</li>
+                    <a href="#dynamic-memory-allocation" style="text-decoration: none;"><li class="subtopic">Dynamic Memory Allocation</li></a>
+                </ul>
+            </li>
+            <li class="topic-item">
+                <div>C Structures & Unions</div>
+                <ul class="subtopics">
+                    <li class="subtopic">Structures</li>
+                    <li class="subtopic">Unions</li>
+                    <li class="subtopic">Enumerations</li>
+                </ul>
+            </li>
+            <li class="topic-item">
+                <div>C File Handling</div>
+                <ul class="subtopics">
+                    <a href="#file-io-basics" style="text-decoration: none;"><li class="subtopic">File I/O Basics</li></a>
+                    <li class="subtopic">File Operations</li>
+                    <li class="subtopic">Error Handling</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="section" id="intro">
+            <h2>C Introduction</h2>
+
+            <h3 id="what-is-c" style="scroll-behavior:smooth;">What is C?</h3>
+            <p>C is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions.</p>
+
+            <div class="note">
+                <strong>Note:</strong> C is a foundational language that has influenced many other languages like C++, Java, and Python.
+            </div>
+
+            <div class="code-example">
+                <pre>#include &lt;stdio.h&gt;
+                    int main() {
+                        printf("Hello, World!\n");
+                        return 0;
+                    }</pre>
+            </div>
+
+            <h3 id="c-basics" style="scroll-behavior:smooth;">C Basics</h3>
+            <p>A C program consists of functions and variables. The main function is the entry point of the program. C syntax is case-sensitive and uses semicolons to terminate statements.</p>
+
+            <div class="code-example">
+                <pre>#include &lt;stdio.h&gt;
+                    int main() {
+                        int num = 10;
+                        printf("Number: %d\n", num);
+                        return 0;
+                    }</pre>
+            </div>
+
+            <h3 id="c-environment-setup" style="scroll-behavior:smooth;" >C Environment Setup</h3>
+            <p>To compile and run C programs, you need a C compiler (like GCC) and a text editor. You can install GCC on Linux, macOS, or Windows (using MinGW or WSL).</p>
+
+            <div class="code-example">
+                <pre>// Example compilation using GCC
+                    gcc filename.c -o output
+                    ./output</pre>
+            </div>
+            <div class="demo">
+                <a href="https://www.programiz.com/c-programming/online-compiler/"><button>Try yourself online</button></a>
+            </div>
+        </div>
+        
+        <!-- Wrap restricted content in a div with restricted-content class -->
+        <div class="restricted-content" id="restricted-content">
+            <div class="section" id="basics">
+                <h2>C Basics</h2>
+
+                <h3 id="variables-data-types" style="scroll-behavior:smooth;" >Variables & Data Types</h3>
+                <p>Variables in C are used to store data. C supports various data types:</p>
+                <ul>
+                    <li>int: Integer</li>
+                    <li>float: Floating-point number</li>
+                    <li>double: Double-precision floating-point number</li>
+                    <li>char: Character</li>
+                    <li>void: Absence of type</li>
+                </ul>
+
+                <div class="code-example">
+                    <pre>int age = 30;
+                        float pi = 3.14;
+                        char grade = 'A';</pre>
+                </div>
+
+                <h3 id="operators">Operators</h3>
+                <p>C provides various operators for performing operations on variables and values:</p>
+                <ul>
+                    <li>Arithmetic: +, -, *, /, %</li>
+                    <li>Assignment: =</li>
+                    <li>Comparison: ==, !=, >, <, >=, <=</li>
+                    <li>Logical: &&, ||, !</li>
+                    <li>Bitwise: &, |, ^, ~, <<, >></li>
+                </ul>
+
+                <div class="code-example">
+                    <pre>int x = 10, y = 5;
+                        int sum = x + y;
+                        if (x > y) {
+                            printf("x is greater than y\n");
+                        }</pre>
+                </div>
+
+                <h3 id="control-structures">Control Structures</h3>
+                <p>Control structures allow you to control the flow of execution in your program:</p>
+                <ul>
+                    <li>if, else, else if</li>
+                    <li>switch</li>
+                    <li>for, while, do-while</li>
+                </ul>
+
+                <div class="code-example">
+                    <pre>for (int i = 0; i < 5; i++) {
+                        printf("%d\n", i);
+                    }
+
+                    while (x > 0) {
+                        x--;
+                    }</pre>
+                </div>
+
+                <h3 id="functions">Functions</h3>
+                <p>Functions are blocks of code that perform specific tasks. C programs are organized into functions.</p>
+
+                <div class="code-example">
+                    <pre>int add(int a, int b) {
+                        return a + b;
+                    }
+
+                    int main() {
+                        int result = add(5, 3);
+                        printf("Result: %d\n", result);
+                        return 0;
+                    }</pre>
+                </div>
+                <div class="demo">
+                    <a href="https://www.programiz.com/c-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+            </div>
+
+            <div class="section" id="arrays-pointers">
+                <h2>C Arrays & Pointers</h2>
+
+                <h3 id="arrays">Arrays</h3>
+                <p>Arrays are used to store multiple values of the same data type in a single variable.</p>
+
+                <div class="code-example">
+                    <pre>int numbers[5] = {1, 2, 3, 4, 5};
+                        for (int i = 0; i < 5; i++) {
+                        printf("%d ", numbers[i]);
+                    }</pre>
+                </div>
+
+                <h3 id="pointers">Pointers</h3>
+                <p>Pointers are variables that store memory addresses. They are used for dynamic memory allocation and passing variables by reference.</p>
+
+                <div class="code-example">
+                    <pre>int num = 10;
+                        int *ptr = &num;
+                        printf("Value: %d, Address: %p\n", *ptr, ptr);</pre>
+                </div>
+
+                <h3 id="dynamic-memory-allocation" style="scroll-behavior:smooth;" >Dynamic Memory Allocation</h3>
+                <p>Dynamic memory allocation allows you to allocate memory during runtime using functions like malloc, calloc, and free.</p>
+
+                <div class="code-example">
+                    <pre>int arr = (int)malloc(5 * sizeof(int));
+                        free(arr);</pre>
+                </div>
+                <div class="demo">
+                    <a href="https://www.programiz.com/c-programming/online-compiler/"><button>Try yourself online</button></a>
+                </div>
+            </div>
+
+            <div class="section" id="structures-unions">
+                <h2>C Structures & Unions</h2>
+
+                <h3 id="structures" style="scroll-behavior:smooth;" >Structures</h3>
+                <p>Structures are user-defined data types that allow you to group variables of different data types under a single name.</p>
+                <div class="code-example">
+                    <pre>struct Person {
+                        char name[50];
+                        int age;
+                    };
+
+                    struct Person person1;
+                    strcpy(person1.name, "John");
+                    person1.age = 30;</pre>
+                </div>
+
+                <h3 id="unions">Unions</h3>
+                <p>Unions are similar to structures, but they store different data types in the same memory location.</p>
+
+                <div class="code-example">
+                    <pre>union Data {
+                        int i;
+                        float f;
+                        char str[20];
+                    };
+
+                    union Data data;
+                    data.i = 10;</pre>
+                </div>
+
+                <h3 id="enumerations">Enumerations</h3>
+                <p>Enumerations (enums) are user-defined data types that consist of named integer constants.</p>
+
+                <div class="code-example">
+                    <pre>enum Weekday {
+                        Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+                    };
+
+                    enum Weekday today = Wednesday;</pre>
+                </div>
+            </div>
+
+            <div class="section" id="file-handling">
+                <h2>C File Handling</h2>
+
+                <h3 id="file-io-basics" style="scroll-behavior:smooth;" >File I/O Basics</h3>
+                <p>C provides functions for reading from and writing to files. The stdio.h library includes functions like fopen, fclose, fprintf, fscanf, etc.</p>
+
+                <div class="code-example">
+                    <pre>FILE *file = fopen("example.txt", "w");
+                        if (file != NULL) {
+                        fprintf(file, "Hello, File!\n");
+                        fclose(file);
+                    }</pre>
+                </div>
+
+                <h3 id="file-operations">File Operations</h3>
+                <p>Common file operations include reading, writing, appending, and seeking within files.</p>
+
+                <div class="code-example">
+                    <pre>FILE *file = fopen("example.txt", "r");
+                        if (file != NULL) {
+                        char buffer[100];
+                        while (fgets(buffer, sizeof(buffer), file) != NULL) {
+                            printf("%s", buffer);
+                        }
+                        fclose(file);
+                    }</pre>
+                </div>
+
+                <h3 id="error-handling">Error Handling</h3>
+                <p>It's important to handle file operations errors, especially when files are not found or cannot be opened.</p>
+
+                <div class="code-example">
+                    <pre>FILE *file = fopen("nonexistent.txt", "r");
+                        if (file == NULL) {
+                            perror("Error opening file");
+                        } 
+                        else {
+                            fclose(file);
+                        }</pre>
+                </div>
+            </div>
+            <div class="demo">
+                <a href="https://www.programiz.com/c-programming/online-compiler/"><button>Try yourself online</button></a>
+            </div>
+        </div>
+        
+        <div id="authModal" class="modal">
+            <div class="modal-content">
+              <h2>Login Required</h2>
+              <p>You need to <strong>login</strong> or <strong>sign up</strong> to continue reading this content.</p>
+              <a href="/login"><button class="btn login-btn">Login</button></a>
+              <a href="/signup"><button class="btn signup-btn">Sign Up</button></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation handling
+        document.querySelectorAll('.topic-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.topic-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                // Scroll to section if a subtopic is clicked
+                if (event.target.classList.contains('subtopic')) {
+                    const sectionId = event.target.textContent.trim().toLowerCase().replace(' ', '-');
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.subtopic').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const sectionId = this.textContent.trim().toLowerCase().replace(' ', '-');
+                const section = document.getElementById(sectionId);
+
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Initialize the page with first section visible
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('what-is-c').scrollIntoView();
+            
+            // Check if user is logged in
+            const userEmail = getCookie("user_email");
+            const restrictedContent = document.getElementById("restricted-content");
+            const authModal = document.getElementById("authModal");
+            
+            if (userEmail) {
+                // User is logged in - show restricted content
+                restrictedContent.style.display = "block";
+                authModal.style.display = "none";
+            } else {
+                // User is not logged in - hide restricted content
+                restrictedContent.style.display = "none";
+            }
+        });
+        
+        // Function to show auth modal
+        function showAuthModal() {
+            document.getElementById("authModal").style.display = "block";
+        }
+    
+        document.querySelectorAll('.subtopic').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const userEmail = getCookie("user_email");
+                const sectionId = this.textContent.trim().toLowerCase().replace(' ', '-');
+                const section = document.getElementById(sectionId);
+            
+                // Check if user is trying to access non-intro content without login
+                const isIntroTopic = this.closest('.topic-item').textContent.includes('Introduction');    
+                if (!userEmail && !isIntroTopic) {
+                    showAuthModal();
+                    return; // Don't proceed with navigation
+                }            
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Get a cookie value by name
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+    </script>
+</body>
+</html>

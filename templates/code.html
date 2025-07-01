@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearningLab</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="/static/css/img/logo-transparent-png.png" type="image/icon type">
+</head>
+<body>
+
+    <div class="first-view" style="background-image: url('/static/img/pexels-francesco-ungaro-5197722.jpg');height: 108vh;">
+        <div class="text-content"> 
+            <h1>The best way to learn code<br>is to write code.</h1>
+            <p>Coding is like poetry, it should be short and concise.</p>
+        </div>
+        <div class="image-content"> 
+            <img src="/static/img/Boy-removebg-preview.png" alt="image" style="height: 450px; width: 450px;">
+        </div>
+    </div> 
+
+    <!--slider Languages-->
+    <div class="carousel" style="width: 1510px;" >
+    <!--  -->
+        <div class="list">
+    
+            <div class="item" style="background-image: url('/static/img/python_2.png');">
+                <div class="items_" style="background-image: url('/static/img/python_2.png'); width: 180px;">    
+                <div class="content">
+                    <!-- <div class="title">SLIDER</div> -->
+                    <div class="name">PYTHON</div>
+                    <div class="des">Python is a popular, general-purpose programming language that's used for many tasks, including web development, data analysis, and machine learning.</div>
+                    <div class="btn">
+                        <a href="{% url 'tutorials' 'python' %}" ><button>Tutorials</button></a>
+                        <a href="{% url 'video_tutorials' 'python' %}"><button>Videos</button></a>
+                    </div>
+                </div>
+                </div>
+            </div> 
+
+            <div class="item" style="background-image: url('/static/img/html.jpg');">
+                <div class="items_" style="background-image: url('/static/img/html.jpg'); width: 180px;">
+                <div class="content">
+                    <!-- <div class="title">SLIDER</div> -->
+                    <div class="name">HTML</div>
+                    <div class="des">HTML, or Hypertext Markup Language, is a code that defines the structure and content of web pages. It's the standard markup language for creating web pages.</div>
+                    <div class="btn">
+                        <a href="{% url 'tutorials' 'html' %}" ><button>Tutorials</button></a>
+                        <a href="{% url 'video_tutorials' 'html' %}"><button>Videos</button></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+    
+            <div class="item" style="background-image: url(/static/img/css_img.webp);">
+                <div class="items_" style="background-image: url(/static/img/css_img.webp); width:180px;">    
+                <div class="content">
+                    <!-- <div class="title">SLIDER</div> -->
+                    <div class="name">CSS</div>
+                    <div class="des">Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML.</div>
+                    <div class="btn">
+                        <a href="{% url 'tutorials' 'css' %}" ><button>Tutorials</button></a>
+                        <a href="{% url 'video_tutorials' 'css' %}"><button>Videos</button></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+    
+            <div class="item" style="background-image: url('/static/img/JavaScript---Thumbnail-1200-x-630.jpg');">
+                <div class="items_" style="background-image: url('/static/img/JavaScript---Thumbnail-1200-x-630.jpg'); width: 180px;">
+
+                <div class="content">
+                    <!-- <div class="title">SLIDER</div> -->
+                    <div class="name">JAVA SCRIPT</div>
+                    <div class="des">JavaScript is a scripting language used to create and control dynamic website content.</div>
+                    <div class="btn">
+                        <a href="{% url 'tutorials' 'js' %}" ><button>Tutorials</button></a>
+                        <a href="{% url 'video_tutorials' 'js' %}"><button>Videos</button></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+    
+            <div class="item" style="background-image: url('/static/img/C_.jpg');">
+                <div class="items_" style="background-image: url('/static/img/C_.jpg'); width: 180px;">
+                
+                <div class="content">
+                    <!-- <div class="title">SLIDER</div> -->
+                    <div class="name">C</div>
+                    <div class="des">C# (C-Sharp) is a general-purpose programming language that's used to create a variety of applications, including mobile apps, games, and websites.</div>
+                    <div class="btn">
+                        <a href="{% url 'tutorials' 'c' %}" ><button>Tutorials</button></a>
+                        <a href="{% url 'video_tutorials' 'c' %}"><button>Videos</button></a>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+    
+            <div class="item" style="background-image: url('/static/img/c_sharp.webp');">
+                <div class="items_" style="background-image: url('/static/img/c_sharp.webp'); width: 180px;">
+                
+                <div class="content">
+                    <!-- <div class="title">SLIDER</div> -->
+                    <div class="name">C#</div>
+                    <div class="des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis culpa similique consequuntur, reprehenderit dicta repudiandae.</div>
+                    <div class="btn">
+                        <a href="{% url 'tutorials' 'c_sharp' %}" ><button>Tutorials</button></a>
+                        <a href="{% url 'video_tutorials' 'c_sharp' %}"><button>Videos</button></a>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+    
+            
+        </div>
+
+        <div class="arrows">
+            <button class="prev"><</button>
+            <button class="next">></button>
+        </div>
+    
+    
+        <!-- time running -->
+        <div class="timeRunning"></div>
+    
+    </div>
+    
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
+
+{% endblock %}

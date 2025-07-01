@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact with Tutors - LearningLab</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+    }
+    header {
+      background: #1f1f1f;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    }
+    header h1 {
+      margin: 0;
+      color: #00bcd4;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .tutor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #00bcd4;
+    }
+    .card h2 {
+      color: #03dac5;
+      margin: 1rem 0 0.5rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #cccccc;
+      margin-bottom: 1rem;
+    }
+    .lang {
+      color: #00e676;
+      font-weight: bold;
+    }
+    .contact {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .contact a {
+      color: #03a9f4;
+      text-decoration: none;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Contact with Our Tutors</h1>
+</header>
+
+<div class="container">
+  <div class="tutor-grid">
+
+    <!-- Mosh Hamedani -->
+    <div class="card">
+      <img src="/static/img/programing with mosh.jpg" alt="Mosh Hamedani">
+      <h2>Mosh Hamedani</h2>
+      <p>Known for his professional and structured teaching style, Mosh excels in C# and Python. He makes complex topics simple and understandable for beginners and professionals alike.</p>
+      <p><span class="lang">Best For:</span> C_Sharp, Python</p>
+      <div class="contact">
+        📧 Email: <a href="mailto:mosh@learninglab.com">mosh@learninglab.com</a><br>
+        📸 Instagram: <a href="https://instagram.com/programming_with_mosh" target="_blank">@mosh_hamedani</a>
+      </div>
+    </div>
+
+    <!-- Bro Code -->
+    <div class="card">
+      <img src="/static/img/brocode.jpg" alt="Bro Code">
+      <h2>Bro Code</h2>
+      <p>Bro Code is known for his practical, hands-on coding tutorials. He’s an expert in JavaScript, C, and HTML. His tutorials are fun, direct, and full of real-life coding tips.</p>
+      <p><span class="lang">Best For:</span> JavaScript, C, HTML</p>
+      <div class="contact">
+        📧 Email: <a href="mailto:brocode@learninglab.com">brocode@learninglab.com</a><br>
+        📸 Instagram: <a href="https://instagram.com/brocode_official" target="_blank">@bro_code</a>
+      </div>
+    </div>
+
+    <!-- Shradha Khapra -->
+    <div class="card">
+      <img src="/static/img/shradha_khapra.jpg" alt="Shradha Khapra">
+      <h2>Shradha Khapra</h2>
+      <p>Shradha is passionate about helping beginners get started in tech. She teaches with clarity and motivation, especially strong in CSS, Python, and web development basics.</p>
+      <p><span class="lang">Best For:</span> CSS, Python, HTML</p>
+      <div class="contact">
+        📧 Email: <a href="mailto:shradha@learninglab.com">shradha@learninglab.com</a><br>
+        📸 Instagram: <a href="https://instagram.com/shradhakhapra" target="_blank">@shradhakhapra</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

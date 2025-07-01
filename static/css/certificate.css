@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+  }
+body {
+    background-color: #625d5d;
+}
+
+.header2 {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    margin-top: 120px;
+    padding: 40px 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header2 h1 {
+    margin: 0;
+    font-size: 2.2em;
+}
+
+.header2 p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+/* Courses Section */
+.courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+/* Course Card */
+.course-card {
+    background: rgb(178, 212, 207);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.course-card h2 {
+    margin-top: 0;
+    color: #444;
+}
+
+.course-card p {
+    font-size: 1em;
+    color: #666;
+    margin: 10px 0;
+}
+
+.price {
+    display: block;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #2575fc;
+    margin: 10px 0;
+}
+
+/* Enroll Button */
+button {
+    background: #2575fc;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #6a11cb;
+}

@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    /* background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.7)),url("/static/img/b3.jpg");*/
+  } 
+  body{
+    background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.7)),url("/static/img/b3.jpg");
+  }
+.diffSection {
+    text-align: center;
+  }
+  a{
+    text-decoration: none;
+  }
+  .service-title{
+      font-size: 50px;
+      padding: 100px;
+      padding-bottom: 40px;
+      color: #edeaed;
+      text-align: center;
+      
+  }
+  .service-swipe {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-attachment: fixed;
+  }
+  .service-swipe .s-card img {
+      width: 100px;
+  }
+  .service-swipe a {
+      padding: 0;
+      margin: 40px 10px;
+  }
+  .service-swipe .s-card {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+      align-items: center;
+      text-align: center;
+      width: 350px;
+      height: 200px;
+      box-shadow: inset 0 0 20px rgba(255,255,255,0.05),
+                      0 0 50px rgba(0,0,0,0.8);
+      border-radius: 5px;
+      cursor: pointer;
+      transition-duration: .5s;
+  }
+  .service-swipe .s-card p {
+      color: #f2f2f2;
+      font-size: 1.2em;
+  }
+  .service-swipe .s-card:hover {
+      box-shadow: 0 0 50px rgba(255,255,255,0.8);
+      transform: translateY(-10px);
+  } 
