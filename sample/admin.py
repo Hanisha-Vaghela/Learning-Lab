@@ -17,4 +17,4 @@ class VideoTutorialAdmin(admin.ModelAdmin):
 admin.site.register(User,UserAdmin)
 admin.site.register(Tutorials,TutorialsAdmin)
 admin.site.register(Certificate,CertificateAdmin)
-admin.site.register(VideoTutorial,VideoTutorialAdmin)
+admin.site.register(VideoTutorial,VideoTutorialAdmin) 
